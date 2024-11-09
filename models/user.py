@@ -1,10 +1,11 @@
+from enum import Enum
 from sqlalchemy import Column, Float, Integer, String
 from sqlalchemy.orm import relationship
-from sqlalchemy.schema import UniqueConstraint
 from sqlalchemy.sql.schema import ForeignKey
 
 from models.base import BaseModel
 
+    
 class User(BaseModel):
     __tablename__ = "user"
 
@@ -17,7 +18,12 @@ class User(BaseModel):
     age = Column(Integer)
     weight = Column(Integer)
     height = Column(Integer)
+
+    calorie = Column(String)
     bmr = Column(Float)
+    active_factor = Column(Float)
+
+    gender = Column(String)
    
     health_goal = relationship("HealthGoal", uselist=False, back_populates="user")
 
@@ -29,6 +35,5 @@ class HealthGoal(BaseModel):
     
     user = relationship("User", back_populates="health_goal")
     user_id = Column(Integer, ForeignKey("user.id"))
-
 
 
