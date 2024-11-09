@@ -35,7 +35,7 @@ def get_dietaryPrefence():
     preference = [preference.value for preference in DietaryPrefence]
     return preference
 
-@router.put("/update-user")
+@router.put("/update_user")
 def update_user(data: UserData, token: str = Depends(oauth2_scheme), db: Session = Depends(get_pg_db)):
     if token is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Not authenticated")
