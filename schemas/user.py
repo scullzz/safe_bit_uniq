@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from enum import Enum
-from typing import Optional
+from typing import List, Optional
 
 class UserData(BaseModel):
     age: int
@@ -123,10 +123,21 @@ class DietaryPrefence(Enum):
     VEGAN = "vegan"
     VEGETARIAN = "vegetarian"
     HALAL = "halal"
-
+    
 class MedicalPreference(BaseModel):
-    allergies: Optional[Allergies] = None
-    medical_condition: Optional[MedicalCondition] = None
-    food_intolerance: Optional[FoodIntolerance] = None
-    dietary_preference: Optional[DietaryPrefence] = None
+    allergies: Optional[List[Allergies]] = None
+    medical_condition: Optional[List[MedicalCondition]] = None
+    food_intolerance: Optional[List[FoodIntolerance]] = None
+    dietary_preference: Optional[List[DietaryPrefence]] = None
+
+class UserData(BaseModel):
+    age: int
+    weight: float
+    height: float
+    gender: str
+    active_factor: float
+    primary_goal: Optional[str] = None  # weight loss, weight gain, etc.
+    target_weight: Optional[int] = None  # desired weight or muscle gain target
+
+    medical_preferences: Optional[MedicalPreference] = None
 
