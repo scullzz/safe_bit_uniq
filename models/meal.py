@@ -2,6 +2,7 @@ from sqlalchemy import Column, Float, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.schema import UniqueConstraint
 from sqlalchemy.sql.schema import ForeignKey
+from sqlalchemy.dialects.postgresql import ARRAY
 
 from models.base import BaseModel
 
@@ -20,6 +21,10 @@ class Meal(BaseModel):
     name = Column(String)
     type = Column(String) # breakfast, lunch, dinner, or snack.
     estimated_cooking_time = Column(Integer) # minutes
+    ingredients = Column(ARRAY(String)) 
+
+    image_bucketname = Column(String)
+    image_filename = Column(String)
 
     nutrition = relationship("MealNutrition", back_populates="meal", uselist=False)
 

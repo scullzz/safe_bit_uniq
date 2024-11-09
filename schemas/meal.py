@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Literal
+from typing import Literal, List, Optional
 
 HealthGoalType = Literal["Weight Loss", "Weight Gain", "Muscle Gain", "Maintenance"]
 
@@ -37,4 +37,6 @@ class MealNutritionSchema(BaseModel):
 class CreateMealRequest(BaseModel):
     meal: MealSchema
     nutrition: MealNutritionSchema
+    ingredients: List[str]
+    image: Optional[str] = None
 

@@ -2,6 +2,7 @@ from sqlalchemy import Column, Float, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.schema import UniqueConstraint
 from sqlalchemy.sql.schema import ForeignKey
+from sqlalchemy.dialects.postgresql import ARRAY
 
 from models.base import BaseModel
 
@@ -20,6 +21,7 @@ class User(BaseModel):
     bmr = Column(Float)
    
     health_goal = relationship("HealthGoal", uselist=False, back_populates="user")
+    medical_reference = relationship("MedicalReference", uselist=False, back_populates="user")
 
 class HealthGoal(BaseModel):
     __tablename__ = "health_goal"
@@ -30,5 +32,13 @@ class HealthGoal(BaseModel):
     user = relationship("User", back_populates="health_goal")
     user_id = Column(Integer, ForeignKey("user.id"))
 
+class MedicalReference(BaseModel):
+    __tablename__ = "medical_reference"
 
+    allergies = Column(ARRAY(String)) 
+    medical_condition = Column(ARRAY(String)) 
+    food_intolerance = Column(ARRAY(String)) 
+    dietary_preference = Column(ARRAY(String)) 
 
+    user = relationship("User", back_populates="medical_reference")
+    user_id = Column(Integer, ForeignKey("user.id"))
