@@ -20,7 +20,7 @@ class User(BaseModel):
    
     health_goal = relationship("HealthGoal", uselist=False, back_populates="user")
 
-class HealtGoal(BaseModel):
+class HealthGoal(BaseModel):
     __tablename__ = "health_goal"
 
     primary_goal = Column(String) # weight loss, weight gain, muscle gain, maintenance
