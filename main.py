@@ -1,9 +1,11 @@
 from fastapi import FastAPI
-
+from routers import user
 from fastapi.middleware.cors import CORSMiddleware
 
-# fuck
+
 app = FastAPI()
+
+app.include_router(user.router)
 
 origins = ["*"]
 
