@@ -2,6 +2,13 @@ from pydantic import BaseModel
 from enum import Enum
 from typing import Optional
 
+class UserData(BaseModel):
+    age: int
+    weight: float
+    height: float
+    gender: str
+    active_factor: float
+
 class Allergies(Enum):
     # Common allergens that can trigger severe reactions in sensitive individuals
     PEANUT = "peanut"             # Found in peanuts and peanut-based products
@@ -123,4 +130,3 @@ class MedicalPreference(BaseModel):
     food_intolerance: Optional[FoodIntolerance] = None
     dietary_preference: Optional[DietaryPrefence] = None
 
-    

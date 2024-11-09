@@ -30,6 +30,7 @@ services:
       - ultralytics_minio_data:/data
     networks:
       - ultralytics_network
+    command: server /data --console-address ":9090"
 
 networks:
   ultralytics_network:

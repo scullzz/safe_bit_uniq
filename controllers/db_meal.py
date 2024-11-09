@@ -11,7 +11,7 @@ BUCKET_NAME = "meal-image"
 def calcualte_meal_calories(meal_nutrition: MealNutritionSchema):
     return (meal_nutrition.carbohydrates) * 4 + (meal_nutrition.proteins * 4) + (meal_nutrition.fats * 9)
 
-def create_meal(db: Session, data: CreateMealRequest, minio_client: Minio ):
+def create_meal(db: Session, data: CreateMealRequest, minio_client: Minio):
     calculated_calories = calcualte_meal_calories(meal_nutrition=data.nutrition)
 
     object_name = None
@@ -49,9 +49,10 @@ def create_meal(db: Session, data: CreateMealRequest, minio_client: Minio ):
         name=data.meal.name, type=data.meal.type, 
         estimated_cooking_time=data.meal.estimated_cooking_time, 
         image_bucketname=BUCKET_NAME,
-        image_filename=object_name
+        image_filename=object_name,
+        ingredients=data.ingredients
     )
-    
+
     meal.nutrition = nutrition
 
     db.add(meal)
