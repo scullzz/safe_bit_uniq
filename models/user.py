@@ -27,7 +27,7 @@ class HealthGoal(BaseModel):
     target_weight = Column(Integer) # Desired weight or specific muscle gain targets.
     
     user = relationship("User", back_populates="health_goal")
-
+    user_id = Column(Integer, ForeignKey("user.id"))
 
 
 
