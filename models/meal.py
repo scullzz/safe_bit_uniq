@@ -19,7 +19,7 @@ class Meal(BaseModel):
 
     name = Column(String)
     type = Column(String) # breakfast, lunch, dinner, or snack.
-    estimated_cooking_time = Column(Integer)
+    estimated_cooking_time = Column(Integer) # minutes
 
     nutrition = relationship("MealNutrition", back_populates="meal", uselist=False)
 
@@ -39,6 +39,8 @@ class MealNutrition(BaseModel):
     '''
 
     __tablename__ = "meal_nutrition"
+
+    calories = Column(Integer)
 
     # mesured in grams / gr
     proteins = Column(Integer)

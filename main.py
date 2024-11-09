@@ -1,11 +1,11 @@
 from fastapi import FastAPI
-from routers import auth
+from routers import auth, meal
 from fastapi.middleware.cors import CORSMiddleware
-
 
 app = FastAPI()
 
 app.include_router(auth.router)
+app.include_router(meal.router)
 
 origins = ["*"]
 
