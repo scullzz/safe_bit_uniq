@@ -29,7 +29,6 @@ class MealNutritionSchema(BaseModel):
     sodium: int = Field(..., description="Amount of sodium in milligrams (mg)")
     cholesterol: int = Field(..., description="Amount of cholesterol in milligrams (mg)")
 
-    meal_id: int = Field(..., description="Foreign key referencing the meal ID")
 
     class Config:
         orm_mode = True
@@ -38,4 +37,4 @@ class MealNutritionSchema(BaseModel):
 class CreateMealRequest(BaseModel):
     meal: MealSchema
     nutrition: MealNutritionSchema
-    
+
