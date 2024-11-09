@@ -1,6 +1,6 @@
 from sqlalchemy import text
 from sqlalchemy.sql import func
-from controllers.database import Base
+from models.database import Base
 from sqlalchemy import Column, Integer, DateTime, Boolean
 
 class BaseModel(Base):
