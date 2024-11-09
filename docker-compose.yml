@@ -31,6 +31,7 @@ services:
     networks:
       - ultralytics_network
     command: server /data --console-address ":9090"
+
 networks:
   ultralytics_network:
     external: true

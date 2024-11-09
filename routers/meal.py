@@ -17,5 +17,5 @@ def create_meal(
     db: Session = Depends(get_pg_db), 
     minio: Minio = Depends(get_minio_client)
 ):
-    return db_meal.create_meal(db=db, data=data)
+    return db_meal.create_meal(db=db, data=data, minio_client=minio)
 
