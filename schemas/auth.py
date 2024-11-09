@@ -10,9 +10,4 @@ class UserAuthenticationRequest(BaseModel):
     email: str
     password: str
 
-class UserPersonlRequest(BaseModel):    
-    age: int
-    weight: int
-    height: int
-
 

@@ -11,6 +11,7 @@ class User(BaseModel):
     firstname = Column(String)
     lastname = Column(String)
 
+    email = Column(String)
     password = Column(String)
     
     age = Column(Integer)
